@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
+
 class RegisterForm(UserCreationForm):
 
     '''Form to register user'''
@@ -20,7 +21,7 @@ class RegisterForm(UserCreationForm):
 
         '''Method to save the user'''
 
-        user = super(SignUpForm, self).save(commit=False)
+        user = super(RegisterForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
