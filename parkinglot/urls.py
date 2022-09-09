@@ -11,4 +11,6 @@ urlpatterns = [
     path('delete_ticket/<int:ticketid>',delete_ticket, name='delete_ticket'),
     path('lot/<int:lotid>',lot_detail, name='lot_detail'),
     path('lots/',all_lots, name='all_lots'),
+    path('success/',success, name='success'),
+    path('error/',error, name='error'),
 ]

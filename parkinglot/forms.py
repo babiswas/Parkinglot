@@ -17,4 +17,12 @@ class TicketForm(ModelForm):
 
     class Meta:
         model= Ticket
-        fields = ['floor','slot','name','state']
+        fields = ['vehicle']
+
+class InactivateForm(ModelForm):
+
+    '''InactivateForm for making the ticket Inactive'''
+
+    class Meta:
+        model= Ticket
+        fields = ['ticketstate']
