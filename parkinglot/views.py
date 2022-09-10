@@ -39,7 +39,8 @@ def add_ticket(request,lotid):
                     ticket.ticketowner=request.user
                     ticket.vehicle=Car.objects.get(pk=request.POST.get('vehicle'))
                     ticket.save()
-                return redirect('parkinglot:success',permanent=True)
+                    return redirect('parkinglot:success',permanent=True)
+            return redirect('parkinglot:error',permanent=True)
             form = TicketForm()
             form.fields['vehicle'].queryset=cars
             return render(request, 'parkinglot/lot_ticket.html', {'form': form })
@@ -53,6 +54,7 @@ def inactivate_ticket(request,ticketid):
 
     ticket=Ticket.objects.get(pk=ticketid)
     if request.method == "POST":
+        with transaction.atomic():
             lotid=ticket.lot.id
             lot=Lot.objects.get(pk=lotid)
             lot.state='AVAILABLE'
@@ -60,6 +62,7 @@ def inactivate_ticket(request,ticketid):
             ticket.ticketstate='INACTIVE'
             ticket.save()
             return redirect('parkinglot:success', permanent=True)
+        return redirect('parkinglot:error', permanent=True)
     form = InactivateForm(instance=ticket)
     return render(request, 'parkinglot/inactivate_ticket.html', {'form': form})
 
