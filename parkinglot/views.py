@@ -59,7 +59,7 @@ def inactivate_ticket(request,ticketid):
     return render(request, 'parkinglot/inactivate_ticket.html', {'form': form})
 
 
-def sucess(request):
+def success(request):
     return HttpResponse('<h1>Success</h1>')
 
 def error(request):

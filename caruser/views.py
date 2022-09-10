@@ -52,4 +52,4 @@ def user_logout(request):
     '''Function based views for user logout'''
 
     auth.logout(request)
-    return redirect('userapp:login', permanent=True)
+    return redirect('caruser:login', permanent=True)
