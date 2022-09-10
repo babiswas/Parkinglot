@@ -13,5 +13,8 @@ class Car(models.Model):
     carcolor=models.CharField(max_length=20,default='NOCOLOR')
     registereddate=models.DateTimeField(auto_now=True,blank=False)
 
+    def __str__(self):
+        return self.carname
+
 
 

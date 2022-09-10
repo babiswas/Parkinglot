@@ -26,7 +26,6 @@ def add_car(request):
 
         '''Method to add a new car'''
 
-        print("Add car method executing:")
         if request.method == "POST":
             form=CarForm(request.POST)
             car=Car()

@@ -16,7 +16,7 @@ class Lot(models.Model):
     name=models.CharField(max_length=50)
     state=models.CharField(max_length=20,choices=STATE,default='AVAILABLE')
 
-    def __init__(self):
+    def __str__(self):
         return self.name
 
 class Ticket(models.Model):
@@ -29,9 +29,5 @@ class Ticket(models.Model):
     vehicle=models.ForeignKey(Car,on_delete=models.CASCADE)
     lot=models.ForeignKey(Lot,on_delete=models.CASCADE)
     ticketstate=models.CharField(max_length=20,choices=STATE,default='ACTIVE')
-
-
-    def __init__(self):
-        return self.ticketstate
 
 
