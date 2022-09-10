@@ -1,0 +1,16 @@
+<html>
+   <h2>All Cars</h2>
+   {% for car in cars %}
+       <h3>Car Name:</h3>
+       <p>{{car.carname}}</p>
+       <h3>Car Owner:</h3>
+       <p>{{car.carowner.username}}</p>
+       <h3>Car Number:</h3>
+       <p>{{car.carnumber}}</p>
+       <h3>Car Color:</h3>
+       <p>{{car.carcolor}}</p>
+       <h3>Registered Date:</h3>
+       <p>{{car.registereddate}}</p>
+       <hr>
+   {% endfor %}
+</html>

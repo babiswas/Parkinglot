@@ -14,5 +14,4 @@ class Car(models.Model):
     registereddate=models.DateTimeField(auto_now=True,blank=False)
 
 
-    def __init__(self):
-        return self.carname
+
