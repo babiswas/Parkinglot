@@ -4,7 +4,7 @@ from .views import add_ticket,inactivate_ticket,lot_detail,all_lots,success,erro
 app_name='parkinglot'
 
 urlpatterns = [
-    path('add_ticket/',add_ticket, name='create_ticket'),
+    path('add_ticket/<int:lotid>',add_ticket, name='create_ticket'),
     path('edit_ticket/<int:ticketid>',inactivate_ticket, name='edit_ticket'),
     path('lot/<int:lotid>',lot_detail, name='lot_detail'),
     path('lots/',all_lots, name='all_lots'),

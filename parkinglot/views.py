@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import Lot,Ticket
+from carapp.models import Car
 from django.contrib.auth.models import User
 from .forms import TicketForm,LotForm,InactivateForm
 from django.http import HttpResponse
+from django.db import transaction
 
 
 def lot_detail(request,lotid):
@@ -29,17 +31,20 @@ def add_ticket(request,lotid):
     cars= Car.objects.filter(carowner_id=request.user.id)
     if lot.state=="AVAILABLE":
             if request.method == "POST":
-                lot.state='OCCUPIED'
-                lot.save()
-                ticket=Ticket()
-                ticket.lot=lot
-                ticket.ticketowner=request.user
-                ticket.vehicle=request.POST.get('vehicle')
-                ticket.save()
+                with transaction.atomic():
+                    lot.state='OCCUPIED'
+                    lot.save()
+                    ticket=Ticket()
+                    ticket.lot=lot
+                    ticket.ticketowner=request.user
+                    ticket.vehicle=Car.objects.get(pk=request.POST.get('vehicle'))
+                    ticket.save()
                 return redirect('parkinglot:success',permanent=True)
             form = TicketForm()
             form.fields['vehicle'].queryset=cars
             return render(request, 'parkinglot/lot_ticket.html', {'form': form })
+    else:
+        return HttpResponse('<h1>Lot Occupied</h1>')
 
 
 def inactivate_ticket(request,ticketid):
