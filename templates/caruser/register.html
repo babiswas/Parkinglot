@@ -1,7 +1,14 @@
-<html>
-  <form method="post">
-      {% csrf_token %}
-      {{form.as_p}}
-      <input type="submit" value="Signup" />
-  </form>
-</html>
+{% extends '../base.html' %}
+
+{% block content %}
+  <center>
+      <div class="register">
+          <form method="post">
+              {% csrf_token %}
+              {{form.as_p}}
+              <input type="submit" value="Signup" />
+         </form>
+      </div>
+  </center>
+{% endblock %}
+

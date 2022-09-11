@@ -1,4 +1,4 @@
-/*NAVBAR CSS*/
+                                                        /*NAVBAR CSS*/
 
 /* Add a black background color to the top navigation */
 .topnav {
@@ -29,7 +29,7 @@
 }
 
 
-/*LOGIN FORM*/
+                                                          /*LOGIN FORM*/
 
 .login{
   height:40%;
@@ -41,6 +41,26 @@
 }
 
 input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=email], select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -63,6 +83,23 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #45a049;
+}
+
+
+                                     /*WEBPAGE BODY*/
+
+body{
+   background-color:#000302;
+}
+
+                                     /*REGISTER FORM*/
+.register{
+  height:40%;
+  width:20%;
+  padding:50px;
+  margin:2%;
+  background-color:orange;
+  border-radius:5px;
 }
 
 
