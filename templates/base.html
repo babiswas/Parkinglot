@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>parkspace</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+   <div class="topnav">
+          <a href="#home">Home</a>
+          {% if not request.user.is_authenticated %}
+             <a href="#news">Register</a>
+          {% endif %}
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          {% if request.user.is_authenticated %}
+          <a href="/logout">Logout</a>
+          {% endif %}
+   </div>
+   <div class="hello">
+       Hello World
+   </div>
+</body>
+</html>
