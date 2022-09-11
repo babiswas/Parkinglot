@@ -72,3 +72,11 @@ def success(request):
 
 def error(request):
     return HttpResponse('<h1>Error</h1>')
+
+
+
+def parking_home(request):
+
+    '''Parking app home service'''
+
+    return render(request,'parkinglot/parking_home.html')

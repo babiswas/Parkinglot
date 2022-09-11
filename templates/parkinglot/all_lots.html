@@ -1,14 +1,17 @@
-<html>
-   <h2>All Cars</h2>
-   {% for lot in all_lots %}
-       <h3>Lot Name:</h3>
-       <p>{{lot.name}}</p>
-       <h3>Lot State:</h3>
-       <p>{{lot.state}}</p>
-       <h3>Lot Floor:</h3>
-       <p>{{lot.floor}}</p>
-       <h3>Slot:</h3>
-       <p>{{lot.slot}}</p>
-       <hr>
+{% extends './parking_home.html' %}
+
+{% block parking_contents %}
+<div>
+    <center><h2>Parking Lots</h2></center>
+    {% for lot in all_lots %}
+       <div id="content">
+          <center>
+             <p><b>Lot Name:</b>{{lot.name}}</p>
+             <p><b>Lot State:</b>{{lot.state}}</p>
+             <p><b>Lot Floor:</b>{{lot.floor}}</p>
+             <p><b>Slot:</b>{{lot.slot}}</p>
+          </center>
+       </div>
    {% endfor %}
-</html>
+</div>
+{% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import add_ticket,inactivate_ticket,lot_detail,all_lots,success,error
+from .views import add_ticket,inactivate_ticket,lot_detail,all_lots,success,error,parking_home
 
 app_name='parkinglot'
 
@@ -10,4 +10,5 @@ urlpatterns = [
     path('lots/',all_lots, name='all_lots'),
     path('success/',success, name='success'),
     path('error/',error, name='error'),
+    path('',parking_home, name='parking_home'),
 ]

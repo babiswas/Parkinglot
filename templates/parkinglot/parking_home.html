@@ -1,0 +1,13 @@
+{% extends '../base.html' %}
+
+{% block content %}
+<div>
+  <div class="parking">
+       <a href="/parking/lots/">Lots</a>
+  </div>
+  <div  class="contentpanel">
+    {% block parking_contents %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

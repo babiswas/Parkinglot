@@ -68,5 +68,11 @@ def error(request):
 
     return HttpResponse('<h1>Error</h1>')
 
+def car_app_home(request):
+
+    '''Car app home service'''
+
+    return render(request,'carapp/carapp_home.html')
+
 
 

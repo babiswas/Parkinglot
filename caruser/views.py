@@ -53,3 +53,5 @@ def user_logout(request):
 
     auth.logout(request)
     return redirect('caruser:login', permanent=True)
+
+

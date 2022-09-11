@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import add_car,get_all_cars,car_detail,edit_car,success,error
+from .views import add_car,get_all_cars,car_detail,edit_car,success,error,car_app_home
 
 app_name='carapp'
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('success/',success, name='success'),
     path('error/',error, name='error'),
     path('edit/<int:carid>',edit_car, name='edit_car'),
+    path('',car_app_home, name='car_home'),
 ]
 
 
