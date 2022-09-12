@@ -6,7 +6,7 @@
     {% for lot in all_lots %}
        <div id="content">
           <center>
-             <p><b>Lot Name:</b>{{lot.name}}</p>
+             <p><b>Lot Name:</b><a href="{% url 'parkinglot:lot_detail' lotid=lot.id %}">{{lot.name}}</a></p>
              <p><b>Lot State:</b>{{lot.state}}</p>
              <p><b>Lot Floor:</b>{{lot.floor}}</p>
              <p><b>Slot:</b>{{lot.slot}}</p>

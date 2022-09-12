@@ -232,7 +232,21 @@ div.content {
    height:200px;
    margin:2px;
    background-color:white;
-   float:right;
+   float:left;
+   border-radius:2px;
+   color:black;
+   padding:20px;
+   margin:3px;
+}
+
+                                /*Lot Detail*/
+
+#lotdetail{
+   width:40%;
+   height:200px;
+   margin:2px;
+   background-color:white;
+   float:left;
    border-radius:2px;
    color:black;
    padding:20px;
