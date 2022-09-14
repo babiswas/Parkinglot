@@ -1,0 +1,17 @@
+{% extends './parking_home.html' %}
+{% block parking_contents %}
+      <div>
+          <div id="alltickets">
+              <h3>All Tickets</h3>
+              {% for ticket in tickets %}
+                   <div id="ticket">
+                      <center>
+                         <p><b>Ticket Owner:</b><a href="">{{ticket.ticketowner.username}}</a></p>
+                         <p><b>Vehicle Name:</b>{{ticket.vehicle.carname}}</p>
+                         <p><b>State :</b>{{ticket.ticketstate}}</p>
+                      </center>
+                   </div>
+              {% endfor %}
+          </div>
+      </div>
+{% endblock %}
