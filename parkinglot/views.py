@@ -10,7 +10,8 @@ from django.db import transaction
 
 def lot_detail(request,lotid):
 
-        '''Get the details of the lot'''
+        '''Get the details of the lot and all the tickets created for this lot'''
+
         with transaction.atomic():
             parking_lot = Lot.objects.get(pk=lotid)
             tickets = Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=parking_lot.id)
