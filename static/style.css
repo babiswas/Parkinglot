@@ -276,6 +276,24 @@ div.content {
    padding:20px;
 }
 
+                          /*INACTIVE TICKET FORM*/
+
+.register{
+  height:40%;
+  width:5%;
+  padding:50px;
+  margin:2%;
+  background-color:orange;
+  border-radius:5px;
+  font-family:Fantasy;
+}
+
+
+
+
+
+
+
 
 
 

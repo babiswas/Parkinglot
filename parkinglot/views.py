@@ -65,7 +65,7 @@ def inactivate_ticket(request,ticketid):
             lot.save()
             ticket.ticketstate='INACTIVE'
             ticket.save()
-            return redirect('parkinglot:success', permanent=True)
+            return redirect('parkinglot:lot_detail',permanent=True,lotid=lot.id)
         return redirect('parkinglot:error', permanent=True)
     form = InactivateForm(instance=ticket)
     return render(request, 'parkinglot/inactivate_ticket.html', {'form': form})
