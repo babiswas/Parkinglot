@@ -302,6 +302,20 @@ div.content {
    margin:3px;
 }
 
+                      /*CAR DETAIL*/
+
+#cardetail{
+   width:40%;
+   height:200px;
+   margin:2px;
+   background-color:orange;
+   float:left;
+   border-radius:2px;
+   color:black;
+   padding:20px;
+   margin-top:15px;
+}
+
 
 
 

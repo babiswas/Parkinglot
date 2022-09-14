@@ -1,8 +1,9 @@
 {% extends './carapp_home.html' %}
 
 {% block car_contents %}
-        <div>
-                <div id="lotdetail">
+       <center>
+           <div>
+                <div id="cardetail">
                     <center>
                           <h3>Car Detail</h3>
                           <p><b>Car Name:</b>{{car.carname}}</p>
@@ -10,7 +11,8 @@
                           <p><b>Car Number:</b>{{car.carnumber}}</p>
                           <p><b>Car Color:</b>{{car.carcolor}}</p>
                           <p><b>Registered Date:</b>{{car.registereddate}}</p>
-                        </center>
+                    </center>
                 </div>
         </div>
+       </center>
 {% endblock %}
