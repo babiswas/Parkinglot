@@ -6,11 +6,12 @@
     {% for car in cars %}
        <div id="carcontent">
           <center>
-                   <p><b>Car Name:</b><a href="{% url 'carapp:edit_car' carid=car.id %}">{{car.carname}}</a></p>
+                   <p><b>Car Name:</b><a href="{% url 'carapp:car_detail' carid=car.id %}">{{car.carname}}</a></p>
                    <p><b>Car Owner:</b>{{car.carowner.username}}</p>
                    <p><b>Car Number:</b>{{car.carnumber}}</p>
                    <p><b>Car Color:</b>{{car.carcolor}}</p>
                    <p><b>Registered Date:</b>{{car.registereddate}}</p>
+                   <button style="background-color:green;color:white;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{% url 'carapp:edit_car' carid=car.id %}">Edit Car</a></button>
           </center>
        </div>
    {% endfor %}
