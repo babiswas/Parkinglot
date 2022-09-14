@@ -25,6 +25,17 @@ def all_lots(request):
     all_lots = Lot.objects.all()
     return render(request, 'parkinglot/all_lots.html', {'all_lots': all_lots })
 
+def all_tickets(request,lotid):
+
+    tickets=Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=lotid)
+    return render(request, 'parkinglot/lot_tickets.html', {'tickets': tickets})
+
+def all_tickets_user(request):
+
+    tickets=Ticket.objects.filter(ticketowner_id=request.user.id)
+    return render(request, 'parkinglot/tickets.html', {'tickets': tickets})
+
+
 
 def add_ticket(request,lotid):
 

@@ -231,7 +231,7 @@ div.content {
    width:200px;
    height:200px;
    margin:2px;
-   background-color:white;
+   background-color:orange;
    float:left;
    border-radius:5px;
    color:black;
@@ -266,10 +266,10 @@ div.content {
                           /*ALL TICKETS IN A LOT */
 
 #ticket{
-   width:5%;
+   width:10%;
    height:10%
    margin:1px;
-   background-color:white;
+   background-color:orange;
    float:left;
    border-radius:1px;
    color:black;
@@ -302,7 +302,7 @@ div.content {
    margin:3px;
 }
 
-                      /*CAR DETAIL*/
+                      /* CAR DETAIL */
 
 #cardetail{
    width:40%;

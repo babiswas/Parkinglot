@@ -10,6 +10,7 @@
              <p><b>Lot State:</b>{{lot.state}}</p>
              <p><b>Lot Floor:</b>{{lot.floor}}</p>
              <p><b>Slot:</b>{{lot.slot}}</p>
+             <button style="background-color:green;color:white;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{% url 'parkinglot:lot_tickets' lotid=lot.id %}">Tickets</a></button>
           </center>
        </div>
    {% endfor %}
