@@ -33,6 +33,7 @@ def add_ticket(request,lotid):
     lot = Lot.objects.get(pk=lotid)
     cars= Car.objects.filter(carowner_id=request.user.id)
     if lot.state=="AVAILABLE":
+            print("Entered the available block:")
             if request.method == "POST":
                 with transaction.atomic():
                     lot.state='OCCUPIED'
@@ -42,8 +43,8 @@ def add_ticket(request,lotid):
                     ticket.ticketowner=request.user
                     ticket.vehicle=Car.objects.get(pk=request.POST.get('vehicle'))
                     ticket.save()
-                    return redirect('parkinglot:success',permanent=True)
-            return redirect('parkinglot:error',permanent=True)
+                    return redirect('parkinglot:lot_detail',permanent=True,lotid=lotid)
+                return redirect('parkinglot:error',permanent=True)
             form = TicketForm()
             form.fields['vehicle'].queryset=cars
             return render(request, 'parkinglot/lot_ticket.html', {'form': form })
