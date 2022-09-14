@@ -13,5 +13,17 @@
                <h3>Slot:</h3>
                <p>{{parkinglot.slot}}</p>
           </div>
+          <div id="alltickets">
+              <h3>All Tickets</h3>
+              {% for ticket in tickets %}
+                   <div id="ticket">
+                      <center>
+                         <p><b>Ticket Owner:</b><a href="{% url 'parkinglot:lot_detail' lotid=lot.id %}">{{ticket.ticketowner.username}}</a></p>
+                         <p><b>Vehicle Name:</b>{{ticket.vehicle.name}}</p>
+                         <p><b>State :</b>{{ticket.ticketstate}}</p>
+                      </center>
+                   </div>
+              {% endfor %}
+          </div>
       </div>
 {% endblock %}

@@ -11,14 +11,15 @@ from django.db import transaction
 def lot_detail(request,lotid):
 
     '''Get the details of the lot'''
-
-    parking_lot = Lot.objects.get(pk=lotid)
-    return render(request, 'parkinglot/lot_detail.html', {'parkinglot': parking_lot })
+    with transaction.atomic():
+        parking_lot = Lot.objects.get(pk=lotid)
+        tickets = Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=lotid)
+        return render(request, 'parkinglot/lot_detail.html', {'parkinglot': parking_lot,'tickets':tickets})
+    return HttpResponse('<h1>Error</h1>')
 
 def all_lots(request):
 
     '''Get the list of lots'''
-
     all_lots = Lot.objects.all()
     return render(request, 'parkinglot/all_lots.html', {'all_lots': all_lots })
 
@@ -80,3 +81,4 @@ def parking_home(request):
     '''Parking app home service'''
 
     return render(request,'parkinglot/parking_home.html')
+
