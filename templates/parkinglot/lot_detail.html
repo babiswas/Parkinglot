@@ -18,8 +18,8 @@
               {% for ticket in tickets %}
                    <div id="ticket">
                       <center>
-                         <p><b>Ticket Owner:</b><a href="{% url 'parkinglot:lot_detail' lotid=lot.id %}">{{ticket.ticketowner.username}}</a></p>
-                         <p><b>Vehicle Name:</b>{{ticket.vehicle.name}}</p>
+                         <p><b>Ticket Owner:</b><a href="">{{ticket.ticketowner.username}}</a></p>
+                         <p><b>Vehicle Name:</b>{{ticket.vehicle.carname}}</p>
                          <p><b>State :</b>{{ticket.ticketstate}}</p>
                       </center>
                    </div>

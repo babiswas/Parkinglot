@@ -10,12 +10,13 @@ from django.db import transaction
 
 def lot_detail(request,lotid):
 
-    '''Get the details of the lot'''
-    with transaction.atomic():
-        parking_lot = Lot.objects.get(pk=lotid)
-        tickets = Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=lotid)
-        return render(request, 'parkinglot/lot_detail.html', {'parkinglot': parking_lot,'tickets':tickets})
-    return HttpResponse('<h1>Error</h1>')
+        '''Get the details of the lot'''
+        with transaction.atomic():
+            parking_lot = Lot.objects.get(pk=lotid)
+            tickets = Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=parking_lot.id)
+            return render(request, 'parkinglot/lot_detail.html', {'parkinglot': parking_lot,'tickets':tickets})
+        return HttpResponse('<h1>Error<h1>')
+
 
 def all_lots(request):
 

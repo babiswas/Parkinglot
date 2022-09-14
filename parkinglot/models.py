@@ -30,4 +30,7 @@ class Ticket(models.Model):
     lot=models.ForeignKey(Lot,on_delete=models.CASCADE)
     ticketstate=models.CharField(max_length=20,choices=STATE,default='ACTIVE')
 
+    def __str__(self):
+        return self.ticketstate
+
 
