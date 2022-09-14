@@ -1,7 +1,13 @@
 {% extends '../base.html' %}
 
 {% block content %}
-<div class="sidebar">
-  <a href="/cars/">Car App</a>
+<div>
+  <div class="parking">
+       <a href="/carapp/cars/">Cars</a>
+  </div>
+  <div  class="contentpanel">
+    {% block car_contents %}
+    {% endblock %}
+  </div>
 </div>
 {% endblock %}

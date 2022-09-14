@@ -1,16 +1,27 @@
-<html>
-   <h2>All Cars</h2>
-   {% for car in cars %}
-       <h3>Car Name:</h3>
-       <p>{{car.carname}}</p>
-       <h3>Car Owner:</h3>
-       <p>{{car.carowner.username}}</p>
-       <h3>Car Number:</h3>
-       <p>{{car.carnumber}}</p>
-       <h3>Car Color:</h3>
-       <p>{{car.carcolor}}</p>
-       <h3>Registered Date:</h3>
-       <p>{{car.registereddate}}</p>
-       <hr>
+{% extends './carapp_home.html' %}
+
+{% block car_contents %}
+<div>
+    <center><h2>Your Cars</h2></center>
+    {% for car in cars %}
+       <div id="carcontent">
+          <center>
+                   <p><b>Car Name:</b>{{car.carname}}</p>
+                   <p><b>Car Owner:</b>{{car.carowner.username}}</p>
+                   <p><b>Car Number:</b>{{car.carnumber}}</p>
+                   <p><b>Car Color:</b>{{car.carcolor}}</p>
+                   <p><b>Registered Date:</b>{{car.registereddate}}</p>
+          </center>
+       </div>
    {% endfor %}
-</html>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+

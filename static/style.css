@@ -288,7 +288,19 @@ div.content {
   font-family:Fantasy;
 }
 
-                       /* CAR FORM */
+                       /* CAR LIST */
+
+#carcontent{
+   width:200px;
+   height:200px;
+   margin:2px;
+   background-color:orange;
+   float:left;
+   border-radius:5px;
+   color:black;
+   padding:20px;
+   margin:3px;
+}
 
 
 
