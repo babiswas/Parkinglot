@@ -6,7 +6,7 @@
     {% for car in cars %}
        <div id="carcontent">
           <center>
-                   <p><b>Car Name:</b>{{car.carname}}</p>
+                   <p><b>Car Name:</b><a href="{% url 'carapp:edit_car' carid=car.id %}">{{car.carname}}</a></p>
                    <p><b>Car Owner:</b>{{car.carowner.username}}</p>
                    <p><b>Car Number:</b>{{car.carnumber}}</p>
                    <p><b>Car Color:</b>{{car.carcolor}}</p>
