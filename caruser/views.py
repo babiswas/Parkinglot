@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from .forms import RegisterForm
 from django.contrib import auth
 from django.contrib import messages
+from .serializer import UserSerializer
+from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import renderer_classes,api_view
 
 
 # Create your views here.
@@ -53,5 +57,15 @@ def user_logout(request):
 
     auth.logout(request)
     return redirect('caruser:login', permanent=True)
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def api_users(request):
+
+    '''App users list using api view and json renderer'''
+
+    all_user=User.objects.all()
+    users=UserSerializer(all_user,many=True)
+    return Response(users.data)
 
 
