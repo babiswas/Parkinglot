@@ -6,6 +6,11 @@ from django.contrib.auth.models import User
 from .forms import TicketForm,LotForm,InactivateForm
 from django.http import HttpResponse
 from django.db import transaction
+from .serializer import LotSerializer,TicketSerializer
+from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import renderer_classes,api_view
+
 
 
 def lot_detail(request,lotid):
@@ -105,4 +110,25 @@ def parking_home(request):
     '''Parking app home service'''
 
     return render(request,'parkinglot/parking_home.html')
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def api_lots(request):
+
+    '''List of parking lots using api.'''
+
+    all_lots=Lot.objects.all()
+    lots=LotSerializer(all_lots,many=True)
+    return Response(lots.data)
+
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def api_tickets(request):
+
+    '''List of tickets using api.'''
+
+    all_tickets=Ticket.objects.filter(ticketowner_id=request.user.id)
+    lot_tickets=TicketSerializer(all_tickets,many=True)
+    return Response(lot_tickets.data)
 

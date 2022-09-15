@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from .serializer import CarSerializer
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
+from caruser.serializer import UserSerializer
 from rest_framework.decorators import renderer_classes,api_view
 
 # Create your views here.
