@@ -9,6 +9,7 @@
                          <p><b>Ticket Owner:</b><a href="">{{ticket.ticketowner.username}}</a></p>
                          <p><b>Vehicle Name:</b>{{ticket.vehicle.carname}}</p>
                          <p><b>State :</b>{{ticket.ticketstate}}</p>
+                          <button style="background-color:green;color:white;margin-top:15px;margin-bottom:15px;" class="btnd"><a href="{% url 'parkinglot:edit_ticket' ticketid=ticket.id %}">Tickets</a></button>
                       </center>
                    </div>
               {% endfor %}
