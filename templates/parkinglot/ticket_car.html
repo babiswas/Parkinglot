@@ -11,6 +11,10 @@
                     <th>Car Name</th>
                     <th>Car Number</th>
                     <th>Ticket State</th>
+                    <th>Ticket Owner</th>
+                    <th>Ticket Owner Mail</th>
+                    <th>Registered Date</th>
+                    <th>Car Color</th>
                 </tr>
                 {% for tc in ticket_car %}
                 <tr>
@@ -18,6 +22,10 @@
                    <td>{{tc.vehicle.carname}}</td>
                    <td>{{tc.vehicle.carnumber}}</td>
                    <td>{{tc.ticketstate}}</td>
+                    <td>{{tc.ticketowner.username}}</td>
+                    <td>{{tc.ticketowner.email}}</td>
+                    <td>{{tc.vehicle.registereddate}}</td>
+                    <td>{{tc.vehicle.carcolor}}</td>
                 </tr>
                 {% endfor %}
             </table>
