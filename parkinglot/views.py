@@ -32,8 +32,16 @@ def all_tickets(request,lotid):
 
 def all_tickets_user(request):
 
+    '''Get all the tickets created by the user'''
+
     tickets=Ticket.objects.filter(ticketowner_id=request.user.id)
     return render(request, 'parkinglot/tickets.html', {'tickets': tickets})
+
+def ticket_car(request):
+
+    ticket_car=Ticket.objects.select_related('vehicle').filter(ticketowner_id=request.user.id)
+    return render(request, 'parkinglot/ticket_car.html', {'ticket_car': ticket_car})
+
 
 
 

@@ -1,0 +1,31 @@
+{% extends './parking_home.html' %}
+
+{% block parking_contents %}
+<div>
+    <center><h2>Car and ticket details</h2></center>
+       <div id="tablespace">
+          <center>
+             <table id="mytable" style="width:30%;border:1px solid black;border-collapse:collapse;">
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Car Name</th>
+                    <th>Car Number</th>
+                    <th>Ticket State</th>
+                </tr>
+                {% for tc in ticket_car %}
+                <tr>
+                   <td>{{tc.id}}</td>
+                   <td>{{tc.vehicle.carname}}</td>
+                   <td>{{tc.vehicle.carnumber}}</td>
+                   <td>{{tc.ticketstate}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+           </center>
+       </div>
+</div>
+{% endblock %}
+
+
+
+

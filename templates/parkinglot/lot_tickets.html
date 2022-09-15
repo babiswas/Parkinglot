@@ -4,7 +4,7 @@
           <div id="alltickets">
               <h3>All Tickets</h3>
               {% for ticket in tickets %}
-                   <div id="ticket">
+                   <div id="ticket" style="margin-right:15px;margin-left:15px;">
                       <center>
                          <p><b>Ticket Owner:</b><a href="">{{ticket.ticketowner.username}}</a></p>
                          <p><b>Vehicle Name:</b>{{ticket.vehicle.carname}}</p>
