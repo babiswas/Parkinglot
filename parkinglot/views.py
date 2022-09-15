@@ -39,6 +39,8 @@ def all_tickets_user(request):
 
 def ticket_car(request):
 
+    '''A service to show the car and ticket info...'''
+
     ticket_car=Ticket.objects.select_related('vehicle').filter(ticketowner_id=request.user.id)
     return render(request, 'parkinglot/ticket_car.html', {'ticket_car': ticket_car})
 

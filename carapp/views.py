@@ -4,6 +4,10 @@ from .models import Car
 from django.contrib.auth.models import User
 from .forms import CarForm,CarUpdateForm
 from django.http import HttpResponse
+from .serializer import CarSerializer
+from rest_framework.response import Response
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import renderer_classes,api_view
 
 # Create your views here.
 
@@ -73,6 +77,20 @@ def car_app_home(request):
     '''Car app home service'''
 
     return render(request,'carapp/carapp_home.html')
+
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def api_user_cars(request):
+
+    '''App users list using api view and json renderer'''
+
+    all_cars_user=Car.objects.filter(carowner_id=request.user.id)
+    cars=CarSerializer(all_cars_user,many=True)
+    return Response(cars.data)
+
+
+
 
 
 
