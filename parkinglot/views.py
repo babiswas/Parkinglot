@@ -9,6 +9,7 @@ from django.db import transaction
 from .serializer import LotSerializer,TicketSerializer
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
+from rest_framework import status
 from rest_framework.decorators import renderer_classes,api_view
 
 
@@ -131,4 +132,17 @@ def api_tickets(request):
     all_tickets=Ticket.objects.filter(ticketowner_id=request.user.id)
     lot_tickets=TicketSerializer(all_tickets,many=True)
     return Response(lot_tickets.data)
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def mytickets(request):
+
+    '''List of tickets using api.'''
+    with transaction.atomic():
+        user=User.objects.get(id=request.user.id)
+        mytickets=user.ticket_set.all()
+        all_my_tickets=TicketSerializer(mytickets,many=True)
+        return Response(all_my_tickets.data,status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 

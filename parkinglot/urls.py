@@ -1,6 +1,6 @@
 from django.urls import path,include
 from .views import add_ticket,inactivate_ticket,lot_detail,all_lots,success,error,parking_home,all_tickets,all_tickets_user,ticket_car
-from .views import api_lots,api_tickets
+from .views import api_lots,api_tickets,mytickets
 app_name='parkinglot'
 
 urlpatterns = [
@@ -15,5 +15,6 @@ urlpatterns = [
     path('ticketcar/',ticket_car, name='ticket_car'),
     path('api/v1/lots/',api_lots, name='api_lots_v1'),
     path('api/v1/tickets/',api_tickets, name='api_tickets_v1'),
+    path('api/v1/mytickets/',mytickets, name='my_tickets_v1'),
     path('',parking_home, name='parking_home'),
 ]
