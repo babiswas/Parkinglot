@@ -10,6 +10,7 @@ from .serializer import LotSerializer,TicketSerializer
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from rest_framework import status
+from rest_framework import serializers
 from rest_framework.decorators import renderer_classes,api_view
 
 
@@ -139,10 +140,12 @@ def mytickets(request):
 
     '''List of tickets using api.'''
     with transaction.atomic():
-        user=User.objects.get(id=request.user.id)
-        mytickets=user.ticket_set.all()
-        all_my_tickets=TicketSerializer(mytickets,many=True)
-        return Response(all_my_tickets.data,status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            user=User.objects.get(id=request.user.id)
+            mytickets=user.ticket_set.all()
+            all_my_tickets=TicketSerializer(mytickets,many=True)
+            return Response(all_my_tickets.data,status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
