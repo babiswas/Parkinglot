@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from rest_framework import status
 from rest_framework import serializers
+from carapp.serializer import CarSerializer
 from rest_framework.decorators import renderer_classes,api_view
 
 
@@ -145,6 +146,20 @@ def mytickets(request):
             mytickets=user.ticket_set.all()
             all_my_tickets=TicketSerializer(mytickets,many=True)
             return Response(all_my_tickets.data,status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(('GET',))
+@renderer_classes((JSONRenderer,))
+def mycars(request):
+
+    '''List of tickets using api.'''
+    with transaction.atomic():
+        try:
+            user=User.objects.get(id=request.user.id)
+            mycars=user.car_set.all()
+            all_my_cars=CarSerializer(mycars,many=True)
+            return Response(all_my_cars.data,status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
