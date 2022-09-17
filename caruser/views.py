@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
-from .forms import RegisterForm,MembershipForm
+from .forms import RegisterForm,MemberForm
 from django.contrib import auth
 from django.contrib import messages
 from .serializer import UserSerializer
@@ -82,10 +82,9 @@ def membership_form(request):
 
     '''Membership form for joining a group...'''
 
-    form = MembershipForm()
+
     groups = Group.objects.all()
     if request.method == "POST":
-        if form.is_valid():
             with transaction.atomic():
                 group = request.POST.get('groupname')
                 mygroup = Group.objects.get(name=group)
@@ -94,7 +93,8 @@ def membership_form(request):
                 user.groups.add(mygroup)
                 return redirect('caruser:user_detail')
             return render(request, 'caruser/error.html')
-    form.fields['member'].queryset=groups
+    form = MemberForm()
+    form.fields['name'].queryset=groups
     return render(request,'caruser/member.html',{'form':form})
 
 
@@ -102,7 +102,7 @@ def userdetail(request):
 
     '''Membership form for joining a group...'''
 
-    user = User.objects.get(id=request.id)
+    user = User.objects.get(id=request.user.id)
     groups = user.groups.all()
     return render(request,'caruser/member_detail.html',{'groups':groups,'user':user})
 

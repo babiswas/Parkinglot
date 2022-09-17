@@ -2,15 +2,17 @@
 
 {% block content %}
       <div>
-          <div id="lotdetail">
+          <div id="lotdetail1">
               <h2>User Detail</h2>
                <p>User Name:{{user.username}}</p>
                <p>User Email:{{user.email}}</p>
                <p>User Firstname:{{user.firstname}}</p>
                <p>User lastname:{{user.lastname}}</p>
                <h3>Membership</h3>
-               { % for g in groups %}
-                  <p>{{g.name}}</p>
+               {% for g in groups %}
+               <div>
+                   <p>{{g.name}}</p>
+               </div>
                {% endfor %}
           </div>
       </div>

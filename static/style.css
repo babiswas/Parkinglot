@@ -357,6 +357,20 @@ table{
    margin:3px;
 }
 
+                                     /*USERDETAIL*/
+
+#lotdetail1{
+   width:40%;
+   height:300px;
+   margin:2px;
+   background-color:white;
+   float:left;
+   border-radius:2px;
+   color:black;
+   padding:20px;
+   margin:3px;
+}
+
 
 
 
