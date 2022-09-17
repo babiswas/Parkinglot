@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from carservice.models import CarService
+from django.db import transaction
 
 # Create your models here.
 
@@ -52,6 +53,7 @@ class Car(models.Model):
 
     def __str__(self):
         return self.carname
+
 
 
 

@@ -9,6 +9,8 @@ from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 from caruser.serializer import UserSerializer
 from rest_framework.decorators import renderer_classes,api_view
+from django.db import transaction
+from .models import CarGroup
 
 # Create your views here.
 
@@ -48,14 +50,17 @@ def add_car(request):
         '''Method to add a new car'''
 
         if request.method == "POST":
-            form=CarForm(request.POST)
-            car=Car()
-            car.carowner=request.user
-            car.carname=request.POST.get('carname')
-            car.carcolor=request.POST.get('carcolor')
-            car.carnumber = request.POST.get('carnumber')
-            car.save()
-            return redirect('carapp:car_detail',carid=car.id)
+            with transaction.atomic():
+                form=CarForm(request.POST)
+                car=Car()
+                car.carowner=request.user
+                car.carname=request.POST.get('carname')
+                car.carcolor=request.POST.get('carcolor')
+                car.carnumber = request.POST.get('carnumber')
+                car.cargroup=CarGroup.objects.get(name=request.groups.all()[0].name)
+                car.save()
+                return redirect('carapp:car_detail',carid=car.id)
+            return HttpResponse('<h1>Error</h1>')
 
         form = CarForm()
         return render(request, 'carapp/add_car.html', {'form': form})

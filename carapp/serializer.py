@@ -10,3 +10,4 @@ class CarSerializer(serializers.Serializer):
     carnumber = serializers.CharField(required=True, allow_blank=False,max_length=100)
     carcolor =  serializers.CharField(required=True, allow_blank=False,max_length=100)
     carowner = UserSerializer(required=True)
+    registereddate=serializers.DateTimeField(required=True)
