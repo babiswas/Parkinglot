@@ -7,7 +7,7 @@ class Car(models.Model):
 
     '''Model for a car'''
 
-    STATE = [('PARKED', 'Parked'), ('UNPARKED', 'Occupied')]
+    STATE = [('PARKED', 'Parked'), ('UNPARKED', 'Unparked')]
 
     carname=models.CharField(max_length=100)
     carowner=models.ForeignKey(User,on_delete=models.CASCADE,default=1)
