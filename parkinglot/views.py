@@ -73,9 +73,8 @@ def add_ticket(request,lotid):
     '''Method to create a lot ticket'''
 
     lot = Lot.objects.get(pk=lotid)
-    cars= Car.objects.filter(carowner_id=request.user.id)
+    cars= Car.objects.filter(carowner_id=request.user.id).filter(state='UNPARKED').all()
     if lot.state=="AVAILABLE":
-            print("Entered the available block:")
             if request.method == "POST":
                 with transaction.atomic():
                     lot.state='OCCUPIED'
@@ -84,6 +83,7 @@ def add_ticket(request,lotid):
                     ticket.lot=lot
                     ticket.ticketowner=request.user
                     ticket.vehicle=Car.objects.get(pk=request.POST.get('vehicle'))
+                    ticket.vehicle='PARKED'
                     ticket.save()
                     return redirect('parkinglot:lot_detail',permanent=True,lotid=lotid)
                 return redirect('parkinglot:error',permanent=True)
@@ -106,6 +106,7 @@ def inactivate_ticket(request,ticketid):
             lot.state='AVAILABLE'
             lot.save()
             ticket.ticketstate='INACTIVE'
+            ticket.vehicle.state='UNPARKED'
             ticket.save()
             return redirect('parkinglot:lot_detail',permanent=True,lotid=lot.id)
         return redirect('parkinglot:error', permanent=True)

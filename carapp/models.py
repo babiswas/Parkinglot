@@ -7,11 +7,14 @@ class Car(models.Model):
 
     '''Model for a car'''
 
+    STATE = [('PARKED', 'Parked'), ('UNPARKED', 'Occupied')]
+
     carname=models.CharField(max_length=100)
     carowner=models.ForeignKey(User,on_delete=models.CASCADE,default=1)
     carnumber=models.CharField(max_length=100)
     carcolor=models.CharField(max_length=20,default='NOCOLOR')
     registereddate=models.DateTimeField(auto_now=True,blank=False)
+    state= models.CharField(max_length=20,choices=STATE,default='UNPARKED')
 
     def __str__(self):
         return self.carname
