@@ -86,7 +86,7 @@ def membership_form(request):
     groups = Group.objects.all()
     if request.method == "POST":
             with transaction.atomic():
-                group = request.POST.get('groupname')
+                group = request.POST.get('name')
                 mygroup = Group.objects.get(name=group)
                 user = User.objects.get(id=request.user.id)
                 user.groups.clear()
@@ -94,7 +94,6 @@ def membership_form(request):
                 return redirect('caruser:user_detail')
             return render(request, 'caruser/error.html')
     form = MemberForm()
-    form.fields['name'].queryset=groups
     return render(request,'caruser/member.html',{'form':form})
 
 

@@ -6,6 +6,7 @@ from django.forms import ModelForm
 
 
 
+
 class RegisterForm(UserCreationForm):
 
     '''Form to register user'''
@@ -32,13 +33,11 @@ class RegisterForm(UserCreationForm):
 
 
 
-class MemberForm(ModelForm):
+class MemberForm(forms.Form):
+    '''Form for selecting member group...'''
 
-    '''TicketForm for updating tickets'''
-
-    class Meta:
-        model= Group
-        fields = ['name']
+    DEMO_CHOICES=(("GUEST","GUEST"),("PREMIUM","PREMIUM"),("SILVER","SILVER"),("STANDARD", "STANDARD"))
+    name = forms.MultipleChoiceField(choices=DEMO_CHOICES)
 
 
 
