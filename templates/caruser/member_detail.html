@@ -1,0 +1,17 @@
+{% extends '../base.html' %}
+
+{% block content %}
+      <div>
+          <div id="lotdetail">
+              <h2>User Detail</h2>
+               <p>User Name:{{user.username}}</p>
+               <p>User Email:{{user.email}}</p>
+               <p>User Firstname:{{user.firstname}}</p>
+               <p>User lastname:{{user.lastname}}</p>
+               <h3>Membership</h3>
+               { % for g in groups %}
+                  <p>{{g.name}}</p>
+               {% endfor %}
+          </div>
+      </div>
+{% endblock %}

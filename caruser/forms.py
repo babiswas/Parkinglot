@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import Group
 
 
 
@@ -26,5 +27,12 @@ class RegisterForm(UserCreationForm):
         if commit:
             user.save()
             return user
+
+class MembershipForm(forms.Form):
+
+    '''Form to register user'''
+
+    member = forms.CharField(max_length=100, required=True)
+
 
 
