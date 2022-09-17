@@ -20,6 +20,22 @@ def get_all_cars(request):
     cars=Car.objects.filter(carowner_id=request.user.id)
     return render(request,'carapp/cars.html',{'cars':cars})
 
+
+def get_all_cars_parked(request):
+
+    '''Get all the parked cars of the user'''
+
+    cars=Car.parkedcar.filter(carowner_id=request.user.id).all()
+    return render(request,'carapp/cars.html',{'cars':cars})
+
+
+def get_all_cars_unparked(request):
+
+    '''Get all the unparked cars of the user'''
+
+    cars=Car.unparkedcar.filter(carowner_id=request.user.id).all()
+    return render(request,'carapp/cars.html',{'cars':cars})
+
 def car_detail(request,carid):
 
     '''Method to get the details of the car'''
