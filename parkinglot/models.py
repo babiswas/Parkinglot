@@ -5,6 +5,23 @@ from carapp.models import Car
 # Create your models here.
 
 
+class LotManager(models.Manager):
+
+    '''Get all available lots...'''
+
+    def get_queryset(self):
+        return super().get_queryset().filter(state='AVAILABLE')
+
+
+class OccupiedManager(models.Manager):
+
+    '''Get all available lots...'''
+
+    def get_queryset(self):
+        return super().get_queryset().filter(state='OCCUPIED')
+
+
+
 class Lot(models.Model):
 
     '''Model for parking lot'''
@@ -15,6 +32,10 @@ class Lot(models.Model):
     slot=models.IntegerField()
     name=models.CharField(max_length=50)
     state=models.CharField(max_length=20,choices=STATE,default='AVAILABLE')
+    objects=models.Manager()
+    available_lot=LotManager()
+    occupied_lot=OccupiedManager()
+
 
     def __str__(self):
         return self.name

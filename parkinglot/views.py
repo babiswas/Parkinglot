@@ -33,6 +33,19 @@ def all_lots(request):
     all_lots = Lot.objects.all()
     return render(request, 'parkinglot/all_lots.html', {'all_lots': all_lots })
 
+def available_lots(request):
+
+    '''Get all available lots...'''
+    lots=Lot.available_lot.all()
+    return render(request, 'parkinglot/all_lots.html', {'all_lots': lots})
+
+def occupied_lots(request):
+
+    '''Get all available lots...'''
+    lots=Lot.occupied_lot.all()
+    return render(request, 'parkinglot/all_lots.html', {'all_lots': lots})
+
+
 def all_tickets(request,lotid):
 
     tickets=Ticket.objects.filter(ticketowner_id=request.user.id).filter(lot_id=lotid)
