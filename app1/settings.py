@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'carapp',
     'caruser',
     'parkinglot',
+    'carservice',
     'home',
 ]
 

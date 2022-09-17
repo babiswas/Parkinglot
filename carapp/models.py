@@ -1,7 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
+from carservice.models import CarService
 
 # Create your models here.
+
+
+class CarGroup(models.Model):
+
+    '''Car group for associating car with a service.'''
+
+    groupname=models.CharField(max_length=100)
+    services=models.ForeignKey(CarService,on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return self.groupname
 
 class ParkedCarManager(models.Manager):
 
@@ -32,12 +45,18 @@ class Car(models.Model):
     carcolor=models.CharField(max_length=20,default='NOCOLOR')
     registereddate=models.DateTimeField(auto_now=True,blank=False)
     state= models.CharField(max_length=20,choices=STATE,default='UNPARKED')
+    cargroup=models.ForeignKey(CarGroup,on_delete=models.CASCADE,default=1)
     objects=models.Manager()
     parkedcar=ParkedCarManager()
     unparkedcar=UnParkedCarManager()
 
     def __str__(self):
         return self.carname
+
+
+
+
+
 
 
 
