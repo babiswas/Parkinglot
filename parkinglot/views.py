@@ -106,8 +106,10 @@ def inactivate_ticket(request,ticketid):
             lot.state='AVAILABLE'
             lot.save()
             ticket.ticketstate='INACTIVE'
-            ticket.vehicle.state='UNPARKED'
+            car=Car.objects.get(pk=ticket.vehicle.id)
+            car.state='UNPARKED'
             ticket.save()
+            car.save()
             return redirect('parkinglot:lot_detail',permanent=True,lotid=lot.id)
         return redirect('parkinglot:error', permanent=True)
     form = InactivateForm(instance=ticket)
