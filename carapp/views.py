@@ -11,6 +11,7 @@ from caruser.serializer import UserSerializer
 from rest_framework.decorators import renderer_classes,api_view
 from django.db import transaction
 from .models import CarGroup
+from django.contrib.auth.models import Group
 
 # Create your views here.
 
@@ -69,7 +70,7 @@ def add_car(request):
 def edit_car(request,carid):
 
     '''Method to add a new car'''
-
+    groups=Group.objects.all()
     car=Car.objects.get(pk=carid)
     if request.method == "POST":
         car.carname = request.POST.get('carname')
@@ -78,6 +79,7 @@ def edit_car(request,carid):
         return redirect('carapp:car_detail',carid=car.id)
 
     form = CarUpdateForm(instance=car)
+    form.fields['cargroup'].queryset=groups
     return render(request, 'carapp/update_car.html', {'form': form})
 
 

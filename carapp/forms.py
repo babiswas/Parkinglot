@@ -16,5 +16,5 @@ class CarUpdateForm(ModelForm):
 
     class Meta:
         model=Car
-        fields=['carname','carcolor']
+        fields=['carname','carcolor','cargroup']
 
