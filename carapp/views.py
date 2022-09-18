@@ -57,7 +57,7 @@ def add_car(request):
                 car.carname=request.POST.get('carname')
                 car.carcolor=request.POST.get('carcolor')
                 car.carnumber = request.POST.get('carnumber')
-                car.cargroup=CarGroup.objects.get(name=request.groups.all()[0].name)
+                car.cargroup=CarGroup.objects.get(groupname=request.user.groups.all()[0].name)
                 car.save()
                 return redirect('carapp:car_detail',carid=car.id)
             return HttpResponse('<h1>Error</h1>')
